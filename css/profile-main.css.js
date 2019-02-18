@@ -29,7 +29,6 @@ header section > div {
   align-items: center;
 }
 
-header section.navbar,
 header section.toolbar {
   box-shadow: 0 0 5px rgba(0, 0, 0, .25);
   position: relative;
@@ -40,59 +39,12 @@ header section.cover-photo > div {
   width: 100%;
 }
 
-header section.navbar {
-  border-bottom: 1px solid #ccc;
-}
-
-header section.navbar > div {
-  height: var(--navbar-section-height);
-}
-
-header section.navbar a {
-  margin-left: 26px;
-  font-size: 16px;
-  font-weight: 300;
-  color: #555;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-header section.navbar a:hover {
-  color: #777;
-}
-
-header section.navbar a.todo {
-  cursor: default;
-  color: #aaa;
-}
-
-header section.navbar a.todo:hover {
-  position: relative;
-}
-
-header section.navbar a.todo:hover:after {
-  content: 'TODO';
-  position: absolute;
-  left: -10px;
-  top: 2px;
-  font-size: 12px;
-  font-weight: bold;
-  color: #222;
-  text-shadow: 0 0 3px #fff;
-}
-
 header section.toolbar {
   border-top: 1px solid #ddd;
 }
 
 header section.toolbar > div {
   height: var(--toolbar-section-height);
-}
-
-header img.profile {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
 }
 
 header .cover-photo img {
