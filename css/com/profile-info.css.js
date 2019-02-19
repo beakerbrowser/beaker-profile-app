@@ -19,9 +19,15 @@ h1.title {
 }
 
 div.domain {
-  margin-bottom: 16px;
   color: var(--color-text--muted);
   font-weight: 500;
+  margin-bottom: 8px;
+}
+
+div.link {
+  color: var(--color-link);
+  font-weight: 500;
+  margin-bottom: 16px;
 }
 
 div.description {
