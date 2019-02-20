@@ -42,6 +42,7 @@ class Profile extends LitElement {
       let domain = (new URL(this.currentUser.url)).hostname
       window.history.replaceState({}, null, `/${domain}`)
     } else {
+      // read user data
       var viewingUser = await profiles.get(url)
       var libraryInfo = await library.get(url)
       viewingUser.isOwner = libraryInfo.owner
@@ -90,7 +91,7 @@ class Profile extends LitElement {
             <profile-content-nav></profile-content-nav>
           </nav>
           <article>
-            <profile-feed></profile-feed>
+            <profile-feed user-url=${this.viewingUser.url}></profile-feed>
           </article>
         </div>
       </main>

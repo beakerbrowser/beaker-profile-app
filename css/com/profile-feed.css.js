@@ -6,12 +6,19 @@ const cssStr = css`
   border: 1px solid #ddd;
 }
 
-feed-post {
+beaker-feed-post {
   border-bottom: 1px solid #ddd;
 }
 
-feed-post:last-of-type {
+beaker-feed-post:last-of-type {
   border-bottom: 0;
+}
+
+.empty {
+  background: #fff;
+  padding: 20px;
+  text-align: center;
+  color: var(--color-text--muted);
 }
 `
 export default cssStr
