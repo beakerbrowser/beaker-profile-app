@@ -1,4 +1,5 @@
 {
   "title": "Beaker Profile",
-  "description": "The default Beaker Profile app"
+  "description": "The default Beaker Profile app",
+  "fallback_page": "/index.html"
 }

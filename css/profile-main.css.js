@@ -47,12 +47,6 @@ header section.toolbar > div {
   height: var(--toolbar-section-height);
 }
 
-header .cover-photo img {
-  object-fit: cover;
-  height: 500px;
-  width: 100%;
-}
-
 header a.avatar {
   position: relative;
   width: var(--left-column-width);
