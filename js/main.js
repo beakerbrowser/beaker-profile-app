@@ -48,6 +48,7 @@ class Profile extends LitElement {
       viewingUser.isOwner = libraryInfo.owner
       viewingUser.isSaved = libraryInfo.saved
       viewingUser.isFollowed = await followgraph.isAFollowingB(this.currentUser.url, viewingUser.url)
+      viewingUser.isFollowingYou = await followgraph.isAFollowingB(viewingUser.url, this.currentUser.url)
       this.viewingUser = viewingUser
       console.log('user', this.viewingUser)
     }

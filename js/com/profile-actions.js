@@ -46,6 +46,7 @@ class ProfileActions extends LitElement {
     return html`
       <link rel="stylesheet" href="/vendor/beaker-app-stdlib/css/fontawesome.css">
       ${this.user.isOwner ? html`<span class="this-is-you">You created this site</span>` : ''}
+      ${this.user.isFollowingYou ? html`<span class="this-is-you">Follows you</span>` : ''}
       ${this.user.isFollowed
         ? html`
           <beaker-hoverable @click=${this.onToggleFollow}>

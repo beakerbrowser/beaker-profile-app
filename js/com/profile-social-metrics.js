@@ -13,6 +13,7 @@ class ProfileSocialMetrics extends LitElement {
   constructor () {
     super()
     this.userUrl = null
+    this.numFollowers = 0
   }
 
   attributeChangedCallback (name, oldval, newval) {

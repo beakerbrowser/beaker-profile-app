@@ -16,7 +16,7 @@ beaker-feed-post:last-of-type {
 
 .empty {
   background: #fff;
-  padding: 20px;
+  padding: 24px;
   text-align: center;
   color: var(--color-text--muted);
 }
