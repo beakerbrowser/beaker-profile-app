@@ -9,19 +9,27 @@ import './com/profile-content-nav.js'
 import './com/profile-social-metrics.js'
 import './com/profile-actions.js'
 import './com/profile-feed.js'
+import './com/profile-followgraph.js'
 
 class Profile extends LitElement {
   static get properties () {
     return {
       currentUser: {type: Object},
-      viewingUser: {type: Object}
+      viewingUser: {type: Object},
+      view: {type: String}
     }
   }
 
   constructor () {
     super()
+    this.view = window.location.hash || '#posts'
     this.currentUser = null
     this.viewingUser = null
+
+    window.addEventListener('hashchange', e => {
+      this.view = window.location.hash || '#posts'
+    })
+
     this.load()
   }
 
@@ -89,14 +97,23 @@ class Profile extends LitElement {
         <div>
           <nav>
             <profile-info .user=${this.viewingUser}></profile-info>
-            <profile-content-nav></profile-content-nav>
+            <profile-content-nav view=${this.view}></profile-content-nav>
           </nav>
-          <article>
-            <profile-feed user-url=${this.viewingUser.url}></profile-feed>
-          </article>
+          <article>${this.renderView()}</article>
         </div>
       </main>
     `
+  }
+
+  renderView () {
+    switch (this.view) {
+      case '#followers':
+        return html`<profile-followgraph followers user-url=${this.viewingUser.url}></profile-followgraph>`
+      case '#follows':
+        return html`<profile-followgraph follows user-url=${this.viewingUser.url}></profile-followgraph>`
+      default:
+        return html`<profile-feed user-url=${this.viewingUser.url}></profile-feed>`
+    }
   }
 
   renderLoading () {
