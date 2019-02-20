@@ -1,11 +1,40 @@
 import {LitElement, html} from '/vendor/beaker-app-stdlib/vendor/lit-element/lit-element.js'
+import {followgraph} from '../tmp-unwalled-garden.js'
 import profileSocialMetricsCSS from '../../css/com/profile-social-metrics.css.js'
 
 class ProfileSocialMetrics extends LitElement {
+  static get properties () {
+    return {
+      userUrl: {type: 'String', attribute: 'user-url'},
+      numFollowers: {type: 'Number'}
+    }
+  }
+
+  constructor () {
+    super()
+    this.userUrl = null
+  }
+
+  attributeChangedCallback (name, oldval, newval) {
+    super.attributeChangedCallback(name, oldval, newval)
+    if (name === 'user-url' && newval) {
+      // trigger a load when we have a user url
+      this.load()
+    }
+  }
+
+  async load () {
+    var followers = await followgraph.listFollowers(this.userUrl)
+    this.numFollowers = followers.length
+  }
+
   render () {
+    if (!this.userUrl) {
+      return html`<div></div>`
+    }
     return html`
-      <a href="#">
-        <span>42</span> known followers
+      <a href="#followers">
+        <span>${this.numFollowers}</span> known followers
       </a>
     `
   }

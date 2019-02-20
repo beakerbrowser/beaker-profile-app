@@ -48,7 +48,7 @@ class Profile extends LitElement {
 
   render() {
     if (!this.viewingUser) return this.renderLoading()
-    var userDomain = (new URL(this.viewingUser.url)).hostname
+    var viewingUserDomain = (new URL(this.viewingUser.url)).hostname
     return html`
       <link rel="stylesheet" href="/vendor/beaker-app-stdlib/css/fontawesome.css">
       <beaker-app-header
@@ -63,10 +63,10 @@ class Profile extends LitElement {
         </section>
         <section class="toolbar">
           <div>
-            <a class="avatar" href="dat://profile/${userDomain}">
+            <a class="avatar" href="dat://profile/${viewingUserDomain}">
               <img src="${this.viewingUser.url}/thumb">
             </a>
-            <profile-social-metrics></profile-social-metrics>
+            <profile-social-metrics user-url="${this.viewingUser.url}"></profile-social-metrics>
             <div class="spacer"></div>
             <profile-actions></profile-actions>
           </div>
