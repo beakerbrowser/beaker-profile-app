@@ -1,5 +1,6 @@
 import {LitElement, html} from '/vendor/beaker-app-stdlib/vendor/lit-element/lit-element.js'
-import {profiles} from './tmp-beaker.js'
+import {profiles, library} from './tmp-beaker.js'
+import {followgraph} from './tmp-unwalled-garden.js'
 import profileMainCSS from '../css/profile-main.css.js'
 import '/vendor/beaker-app-stdlib/js/com/app-header.js'
 import './com/profile-cover-photo.js'
@@ -12,8 +13,8 @@ import './com/profile-feed.js'
 class Profile extends LitElement {
   static get properties () {
     return {
-      currentUser: {type: 'Object'},
-      viewingUser: {type: 'Object'}
+      currentUser: {type: Object},
+      viewingUser: {type: Object}
     }
   }
 
@@ -41,13 +42,19 @@ class Profile extends LitElement {
       let domain = (new URL(this.currentUser.url)).hostname
       window.history.replaceState({}, null, `/${domain}`)
     } else {
-      this.viewingUser = await profiles.get(url)
-      console.log('user', this.user)
+      var viewingUser = await profiles.get(url)
+      var libraryInfo = await library.get(url)
+      viewingUser.isOwner = libraryInfo.owner
+      viewingUser.isSaved = libraryInfo.saved
+      viewingUser.isFollowed = await followgraph.isAFollowingB(this.currentUser.url, viewingUser.url)
+      this.viewingUser = viewingUser
+      console.log('user', this.viewingUser)
     }
   }
 
   render() {
     if (!this.viewingUser) return this.renderLoading()
+    var isViewingCurrentUser = this.viewingUser.url === this.currentUser.url
     var viewingUserDomain = (new URL(this.viewingUser.url)).hostname
     return html`
       <link rel="stylesheet" href="/vendor/beaker-app-stdlib/css/fontawesome.css">
@@ -68,7 +75,11 @@ class Profile extends LitElement {
             </a>
             <profile-social-metrics user-url="${this.viewingUser.url}"></profile-social-metrics>
             <div class="spacer"></div>
-            <profile-actions></profile-actions>
+            <profile-actions
+              .user=${this.viewingUser}
+              ?is-current-user=${isViewingCurrentUser}
+              @profile-changed=${this.load}
+            ></profile-actions>
           </div>
         </section>
       </header>

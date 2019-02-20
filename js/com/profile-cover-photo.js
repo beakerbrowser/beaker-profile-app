@@ -3,8 +3,8 @@ import {LitElement, html, css} from '/vendor/beaker-app-stdlib/vendor/lit-elemen
 class ProfileCoverPhoto extends LitElement {
   static get properties () {
     return {
-      src: {type: 'String'},
-      didError: {type: 'Boolean'}
+      src: {type: String},
+      didError: {type: Boolean}
     }
   }
 
@@ -29,7 +29,7 @@ ProfileCoverPhoto.styles = css`
   display: block;
   flex: 1;
   height: 500px;
-  --fallback-cover-color: #e91e63;
+  --fallback-cover-color: linear-gradient(to bottom, hsla(216, 82%, 59%, 1), hsla(222, 85%, 55%, 1));
 }
 .fallback,
 img {

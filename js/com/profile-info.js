@@ -5,7 +5,7 @@ import profileInfoCSS from '../../css/com/profile-info.css.js'
 class ProfileInfo extends LitElement {
   static get properties () {
     return {
-      user: {type: 'Object'}
+      user: {type: Object}
     }
   }
 

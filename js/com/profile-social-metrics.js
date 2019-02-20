@@ -5,8 +5,8 @@ import profileSocialMetricsCSS from '../../css/com/profile-social-metrics.css.js
 class ProfileSocialMetrics extends LitElement {
   static get properties () {
     return {
-      userUrl: {type: 'String', attribute: 'user-url'},
-      numFollowers: {type: 'Number'}
+      userUrl: {type: String, attribute: 'user-url'},
+      numFollowers: {type: Number}
     }
   }
 
