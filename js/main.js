@@ -1,6 +1,6 @@
 import {LitElement, html} from '/vendor/beaker-app-stdlib/vendor/lit-element/lit-element.js'
-import {AppHeader} from '/vendor/beaker-app-stdlib/js/com/app-header.js'
 import profileMainCSS from '../css/profile-main.css.js'
+import '/vendor/beaker-app-stdlib/js/com/app-header.js'
 import './com/profile-info.js'
 import './com/profile-content-nav.js'
 import './com/profile-social-metrics.js'
@@ -15,10 +15,10 @@ class Profile extends LitElement {
   render() {
     return html`
       <link rel="stylesheet" href="/vendor/beaker-app-stdlib/css/fontawesome.css">
-      <app-header
+      <beaker-app-header
         profile-pic-src="/img/tmp-profile.png"
         fontawesome-src="/vendor/beaker-app-stdlib/css/fontawesome.css"
-      ></app-header>
+      ></beaker-app-header>
       <header>
         <section class="cover-photo">
           <div>
@@ -50,5 +50,4 @@ class Profile extends LitElement {
 }
 Profile.styles = profileMainCSS
 
-AppHeader.register()
 customElements.define('profile-main', Profile)
