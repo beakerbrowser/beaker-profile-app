@@ -69,7 +69,7 @@ class Profile extends LitElement {
     return html`
       <link rel="stylesheet" href="/vendor/beaker-app-stdlib/css/fontawesome.css">
       <beaker-app-header
-        profile-pic-src="${this.currentUser.url}/thumb"
+        current-user-url="${this.currentUser.url}"
         fontawesome-src="/vendor/beaker-app-stdlib/css/fontawesome.css"
       ></beaker-app-header>
       <header>
