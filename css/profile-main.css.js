@@ -64,6 +64,10 @@ header a.avatar img {
   object-fit: cover;
 }
 
+main {
+  margin-bottom: 100px;
+}
+
 main nav {
   width: var(--left-column-width);
   margin-right: var(--column-spacing);
@@ -72,7 +76,6 @@ main nav {
 main article {
   width: var(--feed-width);
   margin-top: 30px;
-  margin-bottom: 100px;
 }
 
 profile-info {
