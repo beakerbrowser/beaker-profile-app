@@ -61,6 +61,7 @@ header a.avatar img {
   height: calc(var(--left-column-width) - 10px);
   border-radius: 50%;
   border: 5px solid #fff;
+  object-fit: cover;
 }
 
 main nav {
