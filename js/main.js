@@ -52,6 +52,7 @@ class Profile extends LitElement {
       console.log('Redirecting to current user\'s profile')
       let domain = (new URL(this.currentUser.url)).hostname
       window.history.replaceState({}, null, `/${domain}`)
+      window.location.reload()
     } else {
       // read user data
       var viewingUser = await profiles.get(url)
