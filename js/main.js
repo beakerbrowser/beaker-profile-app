@@ -36,6 +36,9 @@ class Profile extends LitElement {
   get locationUserUrl () {
     var domain = window.location.pathname.slice(1)
     if (domain) {
+      if (domain.startsWith('dat://')) {
+        return domain
+      }
       return `dat://${domain}`
     }
     return false
