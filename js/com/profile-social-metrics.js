@@ -1,5 +1,6 @@
 import {LitElement, html} from '/vendor/beaker-app-stdlib/vendor/lit-element/lit-element.js'
 import {followgraph} from '../tmp-unwalled-garden.js'
+import {pluralize} from '/vendor/beaker-app-stdlib/js/strings.js'
 import profileSocialMetricsCSS from '../../css/com/profile-social-metrics.css.js'
 
 class ProfileSocialMetrics extends LitElement {
@@ -35,7 +36,7 @@ class ProfileSocialMetrics extends LitElement {
     }
     return html`
       <a href="#followers">
-        <span>${this.numFollowers}</span> known followers
+        <span>${this.numFollowers}</span> known ${pluralize(this.numFollowers, 'follower')}
       </a>
     `
   }
