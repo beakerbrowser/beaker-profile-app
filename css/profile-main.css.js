@@ -14,6 +14,11 @@ const cssStr = css`
   flex: 1;
 }
 
+beaker-app-header {
+  position: sticky;
+  top: 0;
+}
+
 header {
   background: #fff;
 }
